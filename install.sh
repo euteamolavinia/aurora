@@ -1,4 +1,7 @@
+#!/bin/bash
+
 sudo apt update
+
 sudo apt install -y \
   build-essential pkg-config git curl ca-certificates \
   libwayland-dev libxkbcommon-dev libxkbcommon-x11-dev \
