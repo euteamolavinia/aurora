@@ -1,0 +1,27 @@
+[workspace]
+resolver = "2"
+members = ["crates/aurora-compositor"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.80.1"
+license = "MIT"
+
+[workspace.dependencies]
+smithay = { version = "0.7.0", default-features = false }
+winit = "0.30"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+anyhow = "1"
+
+# Compositor em opt-level 0 é inutilizável na prática.
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
